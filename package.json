@@ -23,8 +23,8 @@
     "webpack-cli": "^3.3.0"
   },
   "scripts": {
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production",
+    "build:dev": "set NODE_ENV=development && webpack --mode=development --progress --colors",
+    "build:prod": "set NODE_ENV=production && webpack --mode=production --progress --colors",
     "test": "jest",
     "extra": "echo extra"
   },
