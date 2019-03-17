@@ -2,13 +2,31 @@
   "name": "reactjs-videoportal",
   "version": "1.0.0",
   "description": "Create ReactJS small app",
-  "main": "app.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "react-redux": "^6.0.1",
+    "react-router": "^4.4.0",
+    "redux": "^4.0.1",
+    "webpack": "^4.29.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "case-sensitive-paths-webpack-plugin": "^2.2.0",
+    "jest": "^24.5.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "redux-devtools": "^3.5.0",
+    "webpack-cli": "^3.3.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production",
+    "test": "jest",
+    "extra": "echo extra"
   },
   "repository": {
     "type": "git",
