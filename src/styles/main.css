@@ -1,0 +1,43 @@
+
+#filterOptionsContainer ul li{
+    display: inline;
+}
+
+#filterOptionsContainer label {
+    float:left;
+    margin:4px;
+    padding: 5px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+}
+
+#filterOptionsContainer label span {
+    text-align: center;
+    display: block;
+}
+
+#filterOptionsContainer label input {
+    position:absolute;
+    top:-20px;
+}
+
+#filterOptionsContainer input:checked + span {
+    background-color:#404040;
+    color:#F7F7F7;
+}
+
+#filterOptionsContainer .pink {
+    background-color:#FF99FF;
+    color:#333;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: left;
+  }

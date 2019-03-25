@@ -23,7 +23,7 @@ var config = {
     plugins: [
         new CaseSensitivePathsPlugin()
     ],
-    watch: false
+    watch: true
 };
 
 module.exports = (env, argv) => {
