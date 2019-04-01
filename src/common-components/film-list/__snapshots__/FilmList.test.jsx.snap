@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmList FilmList - some films in array should correctly render 2 items 1`] = `
+<div>
+  <FilmCard
+    coverPicture="pic.jpg"
+    director="Alfonso Cuarón"
+    key="id1"
+    title="Roma"
+    year={2017}
+  />
+  <FilmCard
+    coverPicture="pic2.jpg"
+    director="Luis Buñuel"
+    key="id2"
+    title="Tristana"
+    year={1970}
+  />
+</div>
+`;

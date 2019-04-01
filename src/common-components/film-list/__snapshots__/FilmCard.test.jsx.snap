@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmCard should correctly render component 1`] = `
+<div
+  className="col-sm-4"
+>
+  <img
+    alt="Some title"
+    src="some picture url"
+  />
+  <h2>
+     
+    Some title
+     
+  </h2>
+  <span>
+     
+    One director
+     
+  </span>
+  <span>
+     
+    2019
+     
+  </span>
+</div>
+`;

@@ -1,8 +1,7 @@
 import React from 'react'; 
 import ReactDOM from 'react-dom'; 
 import SearchPage from './search-page/SearchPage';
-import FilmPage from './film-page/FilmPage';
-import ErrorBoundary from './common-components/ErrorBoundary'
+import ErrorBoundary from './common-components/error-boundary/ErrorBoundary'
 
 let filmsStub = [
     {

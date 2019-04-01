@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
-import FilterOption from './FilterOption';
+import FilterOption from '../common-components/FilterOption';
 
 class SearchToolbar extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             sortTypes: this.props.sortTypes,
-            selectedSortType: this.props.selectedSortType,
-            numberOfFilms: this.props.numberOfFilms
+            selectedSortType: this.props.selectedSortType
         }
         this.handleOptionChange = this.handleOptionChange.bind(this);
     }
@@ -20,9 +19,11 @@ class SearchToolbar extends PureComponent {
     }
     
     render() {
+        const numberOfFilms = this.props.numberOfFilms;
+        const movieWord = numberOfFilms===1 ? 'movie' : 'movies';
         return (
             <div className="row">
-                <div className="col-sm-9">{this.state.numberOfFilms} movies found</div>
+                <div className="col-sm-9">{this.props.numberOfFilms} {movieWord} found</div>
                 <div className="col-sm-3">Sort by
                     <div className="btn-group btn-group-lg">
                         {this.state.sortTypes.map((sortType) => 

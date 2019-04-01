@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import FilterOption from './FilterOption';
+
+import FilterOption from '../common-components/FilterOption';
 
 class SearchHeader extends PureComponent {
     constructor(props) {
@@ -56,7 +57,7 @@ class SearchHeader extends PureComponent {
                     <h2> Find your movie </h2>
                     <input id="searchInput" onKeyDown={this.keyPress} type="text" value={this.state.query} onChange={this.handleInputChange}></input>
                 </div>
-                <div className="row">
+                <div className="row filterList">
                     <div id="filterOptionsContainer">
                         <span>Search by</span>
                         <ul>

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Netflix label is correct 1`] = `
+<span>
+  netflixroulette
+</span>
+`;
+
+exports[`NetflixLabel Netflix label is correct 1`] = `
+<span>
+  netflixroulette
+</span>
+`;
+
+exports[`snapshot 1`] = `
+<span>
+  netflixroulette
+</span>
+`;

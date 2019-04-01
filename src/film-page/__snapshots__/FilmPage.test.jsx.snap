@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmPage should correctly render component 1`] = `
+<div
+  className="panel panel-default"
+>
+  <div
+    className="panel-heading"
+  >
+    <div>
+      <NetflixLabel />
+      <button>
+        Search
+      </button>
+    </div>
+    <FilmHeader
+      filmInfo={Object {}}
+    />
+  </div>
+  <div
+    className="panel-body"
+  >
+    <FilmToolbar />
+    <FilmList
+      films={Array []}
+    />
+  </div>
+  <Footer />
+</div>
+`;

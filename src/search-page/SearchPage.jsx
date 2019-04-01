@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import FilmList from '../common-components/FilmList';
-import Footer from '../common-components/Footer';
-import NetflixLabel from '../common-components/NetflixLabel';
-import SearchHeader from './SearchHeader';
-import SearchToolbar from './SearchToolbar';
+import FilmList from '../common-components/film-list/FilmList';
+import Footer from '../common-components/footer/Footer';
+import NetflixLabel from '../common-components/labels/NetflixLabel';
+import SearchHeader from './header/SearchHeader';
+import SearchToolbar from './toolbar/SearchToolbar';
 
 class SearchPage extends Component {
     constructor(props) {
@@ -43,9 +43,6 @@ class SearchPage extends Component {
                 break;
             case 'rating':
                 sortedFilms = this.state.searchedFilms.sort((a, b) => (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0));
-                break;
-            default:
-                sortedFilms = this.state.searchedFilms;
                 break;
         }
        this.setState({

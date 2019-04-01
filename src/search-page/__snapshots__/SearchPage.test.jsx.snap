@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPage should correctly render component 1`] = `
+<div
+  className="panel panel-default"
+>
+  <div
+    className="panel-heading"
+  >
+    <NetflixLabel />
+    <SearchHeader
+      filterOptions={
+        Object {
+          "defaultChecked": "title",
+          "filterOptions": Array [
+            Object {
+              "name": "title",
+            },
+            Object {
+              "name": "genre",
+            },
+          ],
+        }
+      }
+      handleSearchClick={[Function]}
+    />
+  </div>
+  <div
+    className="panel-body"
+  >
+    <SearchToolbar
+      numberOfFilms={3}
+      selectedSortType="releaseDate"
+      sortHandler={[Function]}
+      sortTypes={
+        Array [
+          Object {
+            "displayName": "release date",
+            "id": "releaseDate",
+          },
+          Object {
+            "displayName": "rating",
+            "id": "rating",
+          },
+        ]
+      }
+    />
+    <FilmList
+      films={
+        Array [
+          Object {
+            "coverPicture": "https://m.media-amazon.com/images/M/MV5BMDU5ZWE3M2MtZTVhYS00Yjk2LWFkYjQtZDdkNzc1YmJmMGIxXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_UY268_CR9,0,182,268_AL_.jpg",
+            "description": "ffff",
+            "director": " Luis Buñuel",
+            "duration": 123,
+            "fullDescription": "ffffff",
+            "genre": "drama",
+            "id": "id2",
+            "rating": 9,
+            "title": "Tristana",
+            "year": 1970,
+          },
+          Object {
+            "coverPicture": "https://m.media-amazon.com/images/M/MV5BMTU0OTc3ODk4Ml5BMl5BanBnXkFtZTgwMzM4NzI5NjM@._V1_UX182_CR0,0,182,268_AL_.jpg",
+            "description": "dddd",
+            "director": "Alfonso Cuarón",
+            "duration": 124,
+            "fullDescription": "ddddddd",
+            "genre": "comedy",
+            "id": "id1",
+            "rating": 8,
+            "title": "Roma",
+            "year": 2017,
+          },
+          Object {
+            "coverPicture": "https://m.media-amazon.com/images/M/MV5BMTU0OTc3ODk4Ml5BMl5BanBnXkFtZTgwMzM4NzI5NjM@._V1_UX182_CR0,0,182,268_AL_.jpg",
+            "description": "dddd",
+            "director": "Alfonso Cuarón",
+            "duration": 124,
+            "fullDescription": "ddddddd",
+            "genre": "comedy",
+            "id": "id3",
+            "rating": 8,
+            "title": "Roma2",
+            "year": 2017,
+          },
+        ]
+      }
+    />
+  </div>
+  <Footer />
+</div>
+`;

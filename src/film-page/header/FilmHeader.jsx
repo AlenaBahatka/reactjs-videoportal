@@ -7,12 +7,12 @@ function FilmHeader(props) {
             <div className="col-sm-6">
                 <img src={coverPicture} alt={title}></img>
             </div>
-            <div className="col-sm-6">
+            <div className="col-sm-6" id="filmAdditionalInfo">
                 <h2>{title} <span>{rating}</span></h2>
-                <span> {description} </span>
-                <span> {year} </span>
-                <span> {duration} </span>
-                <div>
+                <span id="filmDescription"> {description} </span>
+                <span id="filmYear"> {year} </span>
+                <span id="filmDuration"> {duration} </span>
+                <div id="filmDescription">
                     {fullDescription}
                 </div>
             </div>

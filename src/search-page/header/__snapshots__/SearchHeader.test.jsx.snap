@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchHeader should correctly render component 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <h2>
+       Find your movie 
+    </h2>
+    <input
+      id="searchInput"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="row filterList"
+  >
+    <div
+      id="filterOptionsContainer"
+    >
+      <span>
+        Search by
+      </span>
+      <ul>
+        <li
+          key="title"
+        >
+          <FilterOption
+            checkedOption="title"
+            displayName="title"
+            handleOptionChange={[Function]}
+            name="title"
+            optionName="filter"
+          />
+        </li>
+        <li
+          key="genre"
+        >
+          <FilterOption
+            checkedOption="title"
+            displayName="genre"
+            handleOptionChange={[Function]}
+            name="genre"
+            optionName="filter"
+          />
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button
+        className="btn"
+        id="searchButton"
+        onClick={[Function]}
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+`;

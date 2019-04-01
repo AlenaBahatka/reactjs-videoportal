@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmHeader should correctly render component 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-sm-6"
+  >
+    <img
+      alt="Roma"
+      src="pic.jpg"
+    />
+  </div>
+  <div
+    className="col-sm-6"
+    id="filmAdditionalInfo"
+  >
+    <h2>
+      Roma
+       
+      <span>
+        8
+      </span>
+    </h2>
+    <span
+      id="filmDescription"
+    >
+       
+      dddd
+       
+    </span>
+    <span
+      id="filmYear"
+    >
+       
+      2017
+       
+    </span>
+    <span
+      id="filmDuration"
+    >
+       
+      124
+       
+    </span>
+    <div
+      id="filmDescription"
+    >
+      ddddddd
+    </div>
+  </div>
+</div>
+`;

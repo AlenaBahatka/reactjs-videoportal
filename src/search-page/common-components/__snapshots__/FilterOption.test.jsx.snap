@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterOption should correctly render component 1`] = `
+<label>
+  <input
+    checked={true}
+    name="title"
+    onChange={[Function]}
+    type="radio"
+    value="title"
+  />
+  <span>
+    TITLE
+  </span>
+</label>
+`;
