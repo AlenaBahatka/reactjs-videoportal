@@ -6,7 +6,12 @@
       "src/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/dist/**",
+      "!**/cypress/**",
       "!src/index.jsx"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/cypress/",
+      "<rootDir>/node_modules/"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.js"

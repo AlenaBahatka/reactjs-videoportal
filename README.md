@@ -20,3 +20,14 @@ npm run build:dev <br />
 npm run build:prod <br />
 npm test /to run jest tests/ <br />
 webpack-dev-server /just to check if hello world will be rendered/ <br />
+
+Task3
+Added markup using react. App should have 2 pages, so components were separated into packages depending on which page they exist. Also some common were moved two anothe package
+
+Task4
+1. Added unit tests. Enzyme and Jest were used. Snapshot testing was used. Coverage >80% <br />
+to run tests and coverage(change property collectCoverage in case don't need): npm run test <br />
+tests will be running in watch mode - in case something was changed, tests will be rerendered <br/>
+coverage: reactjs-videoportal\output\coverage\jest\lcov-report\index.html
+2. Cypress was installed. Added e2e small test using cypress: <br/> reactjs-videoportal\cypress\integration\videoportal.spec.js <br/>
+to run: npm run cypress:open
