@@ -31,3 +31,8 @@ tests will be running in watch mode - in case something was changed, tests will 
 coverage: reactjs-videoportal\output\coverage\jest\lcov-report\index.html
 2. Cypress was installed. Added e2e small test using cypress: <br/> reactjs-videoportal\cypress\integration\videoportal.spec.js <br/>
 to run: npm run cypress:open
+
+Task5
+1. Added redux store: actions, reducer are in +state folder <br />
+2. Coverage for actions.reducer higher >60%  (see in screenshots or check reactjs-videoportal\output\coverage\jest\lcov-report\index.html) <br/>
+3. TODO: Need to update other tests to make coverage ~100% AND offline data storage
