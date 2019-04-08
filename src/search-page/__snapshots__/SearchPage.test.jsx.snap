@@ -9,19 +9,6 @@ exports[`SearchPage should correctly render component 1`] = `
   >
     <NetflixLabel />
     <SearchHeader
-      filterOptions={
-        Object {
-          "defaultChecked": "title",
-          "filterOptions": Array [
-            Object {
-              "name": "title",
-            },
-            Object {
-              "name": "genre",
-            },
-          ],
-        }
-      }
       handleSearchClick={[Function]}
     />
   </div>
@@ -30,24 +17,22 @@ exports[`SearchPage should correctly render component 1`] = `
   >
     <SearchToolbar
       numberOfFilms={3}
-      selectedSortType="releaseDate"
-      sortHandler={[Function]}
-      sortTypes={
-        Array [
-          Object {
-            "displayName": "release date",
-            "id": "releaseDate",
-          },
-          Object {
-            "displayName": "rating",
-            "id": "rating",
-          },
-        ]
-      }
     />
     <FilmList
       films={
         Array [
+          Object {
+            "coverPicture": "https://m.media-amazon.com/images/M/MV5BMTU0OTc3ODk4Ml5BMl5BanBnXkFtZTgwMzM4NzI5NjM@._V1_UX182_CR0,0,182,268_AL_.jpg",
+            "description": "dddd",
+            "director": "Alfonso Cuarón",
+            "duration": 124,
+            "fullDescription": "ddddddd",
+            "genre": "comedy",
+            "id": "id1",
+            "rating": 8,
+            "title": "Roma",
+            "year": 2017,
+          },
           Object {
             "coverPicture": "https://m.media-amazon.com/images/M/MV5BMDU5ZWE3M2MtZTVhYS00Yjk2LWFkYjQtZDdkNzc1YmJmMGIxXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_UY268_CR9,0,182,268_AL_.jpg",
             "description": "ffff",
@@ -67,20 +52,8 @@ exports[`SearchPage should correctly render component 1`] = `
             "duration": 124,
             "fullDescription": "ddddddd",
             "genre": "comedy",
-            "id": "id1",
-            "rating": 8,
-            "title": "Roma",
-            "year": 2017,
-          },
-          Object {
-            "coverPicture": "https://m.media-amazon.com/images/M/MV5BMTU0OTc3ODk4Ml5BMl5BanBnXkFtZTgwMzM4NzI5NjM@._V1_UX182_CR0,0,182,268_AL_.jpg",
-            "description": "dddd",
-            "director": "Alfonso Cuarón",
-            "duration": 124,
-            "fullDescription": "ddddddd",
-            "genre": "comedy",
             "id": "id3",
-            "rating": 8,
+            "rating": 7,
             "title": "Roma2",
             "year": 2017,
           },
