@@ -3,8 +3,8 @@ import { shallow, mount } from 'enzyme';
 import FilmPage from './FilmPage';
 
 let film = {},
-    similarFilms = [];
-    
+	similarFilms = [];
+
 describe('FilmPage', () => {
 	it('should correctly render component', () => {
 		let filmPageComponent = shallow(<FilmPage film={film} similarFilms={similarFilms} />);

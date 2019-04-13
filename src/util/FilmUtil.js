@@ -1,4 +1,3 @@
-
 // function to map service structure of response to the correct one
 export const remapFilmsStructure = (films = []) => {
 	let filmsWithUpdatedStructure = [];

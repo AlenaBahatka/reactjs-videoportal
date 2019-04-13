@@ -28,11 +28,10 @@ export class SearchPage extends Component {
 	}
 
 	componentDidMount() {
-        fetch('http://reactjs-cdp.herokuapp.com/movies')
-            .then((response) => response.json()).then(({ data: films }) => {
-                this.props.receiveFilms(remapFilmsStructure(films));
-                this.props.sortFilms(this.props.selectedSortType);
-		    });
+		fetch('http://reactjs-cdp.herokuapp.com/movies').then((response) => response.json()).then(({ data: films }) => {
+			this.props.receiveFilms(remapFilmsStructure(films));
+			this.props.sortFilms(this.props.selectedSortType);
+		});
 	}
 
 	render() {

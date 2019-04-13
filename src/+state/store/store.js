@@ -1,8 +1,6 @@
-import { createStore } from 'redux'
-import filmsReducer from '../reducers/reducers'
+import { createStore } from 'redux';
+import filmsReducer from '../reducers/reducers';
 
 export default function configureStore(initialState) {
-  return createStore(
-    filmsReducer
-  )
+	return createStore(filmsReducer);
 }

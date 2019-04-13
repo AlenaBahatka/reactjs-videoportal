@@ -15,8 +15,8 @@ describe('SearchHeader', () => {
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks()
-	})
+		jest.clearAllMocks();
+	});
 
 	it('should correctly render component', () => {
 		searchHeaderComponent = shallow(searchHeader);
