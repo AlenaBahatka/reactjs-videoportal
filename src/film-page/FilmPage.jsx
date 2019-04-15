@@ -7,24 +7,13 @@ import FilmToolbar from './toolbar/FilmToolbar';
 import FilmHeader from './header/FilmHeader';
 import Footer from '../common-components/footer/Footer';
 import NetflixLabel from '../common-components/labels/NetflixLabel';
-import { remapFilmStructure, remapFilmsStructure } from '../util/FilmUtil';
 
 import * as actions from '../+state/actions/actions';
 
 export class FilmPage extends PureComponent {
 	componentDidMount() {
-		let filmId = 353081; // TODO: should be taken from url later
-		fetch(`https://reactjs-cdp.herokuapp.com/movies/${filmId}`)
-			.then((response) => response.json())
-			.then((film) => {
-				let remapedFilm = remapFilmStructure(film);
-				this.props.receiveOneFilm(remapedFilm);
-				return fetch(`https://reactjs-cdp.herokuapp.com/movies?search=${remapedFilm.genre}&searchBy=genres`);
-			})
-			.then((response) => response.json())
-			.then(({ data: similarFilms }) => {
-				this.props.receiveSimilarFilms(remapFilmsStructure(similarFilms));
-			});
+		let filmId = 411741; // TODO: should be taken from url later
+		this.props.getFilmWithSimilar(`https://reactjs-cdp.herokuapp.com/movies/${filmId}`);
 	}
 
 	render() {

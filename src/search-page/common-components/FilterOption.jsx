@@ -1,6 +1,7 @@
 import React from 'react';
 
 function FilterOption(props) {
+	
 	return (
 		<label>
 			<input

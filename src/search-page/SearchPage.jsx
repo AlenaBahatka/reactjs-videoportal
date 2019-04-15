@@ -6,9 +6,9 @@ import Footer from '../common-components/footer/Footer';
 import NetflixLabel from '../common-components/labels/NetflixLabel';
 import SearchHeader from './header/SearchHeader';
 import SearchToolbar from './toolbar/SearchToolbar';
-import { remapFilmsStructure } from '../util/FilmUtil';
 
 import * as actions from '../+state/actions/actions';
+import { getSortedFilms } from '../+state/selectors/selectors';
 
 export class SearchPage extends Component {
 	constructor(props) {
@@ -20,18 +20,14 @@ export class SearchPage extends Component {
 		if (filterOption === 'genre') {
 			filterOption = 'genres';
 		}
-		fetch(`https://reactjs-cdp.herokuapp.com/movies?search=${query}&searchBy=${filterOption}`)
-			.then((response) => response.json())
-			.then(({ data: films }) => {
-				this.props.receiveFilms(remapFilmsStructure(films));
-			});
+		this.props.filterFilms(query, filterOption);
+		const url = `https://reactjs-cdp.herokuapp.com/movies?search=${query}&searchBy=${filterOption}`;
+		this.props.fetchFilms(url);
 	}
 
 	componentDidMount() {
-		fetch('http://reactjs-cdp.herokuapp.com/movies').then((response) => response.json()).then(({ data: films }) => {
-			this.props.receiveFilms(remapFilmsStructure(films));
-			this.props.sortFilms(this.props.selectedSortType);
-		});
+		const url = 'http://reactjs-cdp.herokuapp.com/movies';
+		this.props.fetchFilms(url);
 	}
 
 	render() {
@@ -59,7 +55,7 @@ export class SearchPage extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		searchedFilms: state.searchedFilms,
+		searchedFilms: getSortedFilms(state),
 		selectedSortType: state.selectedSortType,
 		sortTypes: state.sortTypes,
 		filterOptions: state.filterOptions

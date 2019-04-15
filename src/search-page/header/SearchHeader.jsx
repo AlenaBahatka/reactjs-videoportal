@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
 import FilterOption from '../common-components/FilterOption';
 
 class SearchHeader extends PureComponent {
@@ -32,7 +31,6 @@ class SearchHeader extends PureComponent {
 			filterOption: checkedOption
 		});
 	}
-
 	handleInputChange(event) {
 		this.setState({
 			query: event.target.value

@@ -1,45 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchToolbar should correctly render component 1`] = `
-<div
-  className="row"
->
-  <div
-    className="col-sm-9"
-  >
-    1
-     
-    movie
-     found
-  </div>
-  <div
-    className="col-sm-3"
-  >
-    Sort by
-    <div
-      className="btn-group btn-group-lg"
-    >
-      <FilterOption
-        checkedOption="releaseDate"
-        displayName="release date"
-        handleOptionChange={[Function]}
-        key="releaseDate"
-        name="releaseDate"
-        optionName="sort"
-      />
-      <FilterOption
-        checkedOption="releaseDate"
-        displayName="rating"
-        handleOptionChange={[Function]}
-        key="rating"
-        name="rating"
-        optionName="sort"
-      />
-    </div>
-  </div>
-</div>
-`;
-
 exports[`SearchToolbar should correctly render component in case one film 1`] = `
 <div
   className="row"

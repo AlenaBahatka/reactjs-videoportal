@@ -2,6 +2,7 @@ import React from 'react';
 
 function FilmHeader(props) {
 	let { title, year, coverPicture, rating, description, fullDescription, duration } = props.filmInfo;
+	
 	return (
 		<div className="row">
 			<div className="col-sm-6">

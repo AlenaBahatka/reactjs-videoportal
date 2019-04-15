@@ -9,7 +9,6 @@ FilmCard.propTypes = {
 
 function FilmCard(props) {
 	let { title, director, year, coverPicture } = props;
-
 	return (
 		<div className="col-sm-4">
 			<img src={coverPicture} alt={title} />

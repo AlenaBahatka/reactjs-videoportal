@@ -35,4 +35,6 @@ to run: npm run cypress:open
 Task5
 1. Added redux store: actions, reducer are in +state folder <br />
 2. Coverage for actions.reducer higher >60%  (see in screenshots or check reactjs-videoportal\output\coverage\jest\lcov-report\index.html) <br/>
-3. TODO: Need to update other tests to make coverage ~100% AND offline data storage
+3. updated tests <br/>
+4. Added selector according to suggestion <br/>
+5. Added new lib: npm install --save redux-persist <br/>

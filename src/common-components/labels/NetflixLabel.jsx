@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NetflixLabel(props) {
+function NetflixLabel() {
 	return <span>netflixroulette</span>;
 }
 

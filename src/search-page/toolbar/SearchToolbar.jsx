@@ -46,4 +46,5 @@ class SearchToolbar extends PureComponent {
 	}
 }
 
+
 export default SearchToolbar;

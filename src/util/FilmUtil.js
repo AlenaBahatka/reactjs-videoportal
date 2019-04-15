@@ -14,6 +14,7 @@ export const remapFilmStructure = (film = {}) => {
 		director: film.director || 'Unknown director',
 		genre: film.genres && film.genres[0],
 		year: filmDate.getFullYear(),
+		fullDate: filmDate,
 		coverPicture: film.poster_path,
 		rating: film.vote_average,
 		description: film.tagline,

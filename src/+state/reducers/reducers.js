@@ -2,7 +2,8 @@ import {
 	RECEIVE_FILMS_SUCCESS,
 	SORT_FILMS,
 	RECEIVE_ONE_FILM_SUCCESS,
-	RECEIVE_SIMILAR_FILMS_SUCCESS
+	RECEIVE_SIMILAR_FILMS_SUCCESS,
+	FILTER_FILMS
 } from '../actions/actions';
 
 let initialState = {
@@ -23,7 +24,8 @@ let initialState = {
 	],
 	selectedSortType: 'rating',
 	selectedFilm: {},
-	similarFilms: []
+	similarFilms: [],
+	query: ''
 };
 
 function filmsReducer(state = initialState, action) {
@@ -35,22 +37,22 @@ function filmsReducer(state = initialState, action) {
 			};
 		}
 
-		case SORT_FILMS: {
-			let sortedFilms,
-				unsortedFilms = state.searchedFilms.slice();
-			switch (action.sortOption) {
-				case 'releaseDate':
-					sortedFilms = unsortedFilms.sort((a, b) => (a.year > b.year ? 1 : b.year > a.year ? -1 : 0));
-					break;
-				case 'rating':
-					sortedFilms = unsortedFilms.sort(
-						(a, b) => (a.rating > b.rating ? 1 : b.rating > a.rating ? -1 : 0)
-					);
-					break;
-			}
+		case FILTER_FILMS: {
+			let { checkedFilter, query } = action;
 			return {
 				...state,
-				searchedFilms: sortedFilms
+				filterOptions: {
+					...state.filterOptions,
+					defaultChecked: checkedFilter
+				},
+				query
+			};
+		}
+
+		case SORT_FILMS: {
+			return {
+				...state,
+				selectedSortType: action.sortOption
 			};
 		}
 

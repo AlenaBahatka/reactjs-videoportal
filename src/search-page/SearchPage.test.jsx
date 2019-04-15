@@ -5,6 +5,7 @@ import 'isomorphic-fetch';
 import { Provider } from 'react-redux';
 import * as Util from '../util/FilmUtil';
 import ConnectedSearchPage, { SearchPage } from './SearchPage';
+import thunk from 'redux-thunk';
 
 const film1 = {
 	title: 'Roma',
@@ -65,73 +66,44 @@ let initialSateStub = {
 	],
 	selectedSortType: 'rating'
 };
-const mockStore = configureStore();
+const mockStore = configureStore([ thunk ]);
 let store;
 
 describe('SearchPage', () => {
+	let fetchFilmsMock;
 	beforeEach(() => {
 		store = mockStore(initialSateStub);
-		const mockSuccessResponse = {
-			data: [
-				{
-					id: 447365,
-					title: 'Guardians of the Galaxy Vol. 3',
-					tagline: '',
-					vote_average: 0,
-					vote_count: 9,
-					release_date: '2020-05-01',
-					poster_path: 'https://image.tmdb.org/t/p/w500/ldoY4fTZkGISMidNw60GHoNdgP8.jpg',
-					overview: "The third film based on Marvel's Guardians of the Galaxy.",
-					budget: 0,
-					revenue: 0,
-					genres: [ 'Action', 'Adventure', 'Science Fiction' ],
-					runtime: null
-				}
-			]
-		};
-		const mockJsonPromise = Promise.resolve(mockSuccessResponse);
-		const mockFetchPromise = Promise.resolve({
-			json: () => mockJsonPromise
-		});
-		jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
-		jest.spyOn(Util, 'remapFilmsStructure').mockImplementation(() => filmsStub);
+		fetchFilmsMock = jest.fn();
 	});
 
 	it('should correctly render component', () => {
-		let searchPageComponent = shallow(<SearchPage searchedFilms={filmsStub} />);
+		let searchPageComponent = shallow(<SearchPage searchedFilms={filmsStub} fetchFilms={fetchFilmsMock} />);
 
 		expect(searchPageComponent).toMatchSnapshot();
-		expect(global.fetch).toHaveBeenCalledTimes(1);
 	});
 
-	it('should sort films correctly', () => {
-		let searchPageComponent = mount(
-			<Provider store={store}>
-				<ConnectedSearchPage />
-			</Provider>
-		);
-
-		expect(searchPageComponent.find(SearchPage).prop('searchedFilms')[0]).toEqual(film1);
-		expect(searchPageComponent.find(SearchPage).prop('searchedFilms')[1]).toEqual(film2);
-		expect(searchPageComponent.find(SearchPage).prop('searchedFilms')[2]).toEqual(film3);
-
-		searchPageComponent.find(SearchPage).find("input[value='rating']").simulate('change');
-		expect(global.fetch).toHaveBeenCalledTimes(2);
-		expect(Util.remapFilmsStructure).toHaveBeenCalledTimes(1);
-		expect(searchPageComponent.find(SearchPage).prop('searchedFilms').length).toEqual(3);
-		expect(searchPageComponent.find(SearchPage).prop('searchedFilms')[0]).toEqual(film1);
-		expect(searchPageComponent.find(SearchPage).prop('searchedFilms')[1]).toEqual(film2);
-		// expect(searchPageComponent.find(SearchPage).prop('searchedFilms')[2]).toEqual(film2);
-	});
-
-	it('should correctly render component', () => {
-		let searchPageComponent = mount(
-			<Provider store={store}>
-				<ConnectedSearchPage />
-			</Provider>
-		);
-		searchPageComponent.find(SearchPage).instance().handleSearchClick('Roma2', 'genre');
-
-		expect(searchPageComponent.find(SearchPage).prop('searchedFilms').length).toEqual(3);
+	describe('handleSearch', () => {
+		let filterFilmsMock, sortHandlerMock;
+		beforeEach(() => {
+			filterFilmsMock = jest.fn();
+			sortHandlerMock = jest.fn();
+			let searchPageComponent = mount(
+				<SearchPage
+					searchedFilms={filmsStub}
+					filterOptions={initialSateStub.filterOptions}
+					filterFilms={filterFilmsMock}
+					fetchFilms={fetchFilmsMock}
+					sortTypes={initialSateStub.sortTypes}
+					sortFilms={sortHandlerMock}
+				/>
+			);
+			searchPageComponent.find(SearchPage).instance().handleSearchClick('Roma2', 'genre');
+		});
+		it('should call fetching films twice', () => {
+			expect(fetchFilmsMock.mock.calls.length).toBe(2);
+		});
+		it('should call filtering once', () => {
+			expect(filterFilmsMock.mock.calls.length).toBe(1);
+		});
 	});
 });
