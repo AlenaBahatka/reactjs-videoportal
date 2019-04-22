@@ -7,7 +7,7 @@ class SearchHeader extends PureComponent {
 		super(props);
 		this.state = {
 			filterOption: props.filterOptions.defaultChecked,
-			query: ''
+			query: props.currentQuery
 		};
 		this.handleOptionChange = this.handleOptionChange.bind(this);
 		this.handleSearchClick = this.handleSearchClick.bind(this);

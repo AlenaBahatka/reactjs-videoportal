@@ -6,11 +6,16 @@ var config = {
     context: path.join(__dirname, 'src'),
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx']
     },
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './'
+      },
     module: {
         rules: [
             {

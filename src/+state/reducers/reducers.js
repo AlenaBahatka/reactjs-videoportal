@@ -3,7 +3,8 @@ import {
 	SORT_FILMS,
 	RECEIVE_ONE_FILM_SUCCESS,
 	RECEIVE_SIMILAR_FILMS_SUCCESS,
-	FILTER_FILMS
+	FILTER_FILMS,
+	EMPTY_SEARCH
 } from '../actions/actions';
 
 let initialState = {
@@ -69,6 +70,17 @@ function filmsReducer(state = initialState, action) {
 				similarFilms: action.similarFilms
 			};
 		}
+
+		case EMPTY_SEARCH: {
+			return {
+				...state,
+				selectedFilm: {},
+				similarFilms: [],
+				query: '',
+				searchedFilms: []
+			};
+		}
+
 		default:
 			return state;
 	}

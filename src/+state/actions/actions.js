@@ -5,6 +5,7 @@ export const SORT_FILMS = 'SORT_FILMS';
 export const RECEIVE_ONE_FILM_SUCCESS = 'RECEIVE_ONE_FILM_SUCCESS';
 export const RECEIVE_SIMILAR_FILMS_SUCCESS = 'RECEIVE_SIMILAR_FILMS_SUCCESS';
 export const FILTER_FILMS = 'FILTER_FILMS';
+export const EMPTY_SEARCH = 'EMPTY_SEARCH';
 
 // action creator. can dispatch using function and not an object
 // as it will be created by the creator
@@ -32,6 +33,10 @@ export const filterFilms = (query, filterOption) => ({
 export const sortFilms = (sortOption) => ({
 	type: SORT_FILMS,
 	sortOption
+});
+
+export const emptySearch = () => ({
+	type: EMPTY_SEARCH
 });
 
 export const fetchFilms = (url) => {

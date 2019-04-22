@@ -15,6 +15,7 @@ function FilmList(props) {
 					director={film.director}
 					year={film.year}
 					coverPicture={film.coverPicture}
+					filmId={film.id}
 					key={film.id}
 				/>
 			))}

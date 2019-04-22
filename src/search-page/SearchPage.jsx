@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import FilmList from '../common-components/film-list/FilmList';
-import Footer from '../common-components/footer/Footer';
 import NetflixLabel from '../common-components/labels/NetflixLabel';
 import SearchHeader from './header/SearchHeader';
 import SearchToolbar from './toolbar/SearchToolbar';
@@ -12,7 +12,7 @@ import { getSortedFilms } from '../+state/selectors/selectors';
 
 export class SearchPage extends Component {
 	constructor(props) {
-		super(props);
+		super(props);	
 		this.handleSearchClick = this.handleSearchClick.bind(this);
 	}
 
@@ -20,23 +20,42 @@ export class SearchPage extends Component {
 		if (filterOption === 'genre') {
 			filterOption = 'genres';
 		}
+		this.props.history.push(`/search/${query}`);
+		this.filterFilms(query, filterOption);
+	}
+
+	filterFilms(query, filterOption) {
 		this.props.filterFilms(query, filterOption);
 		const url = `https://reactjs-cdp.herokuapp.com/movies?search=${query}&searchBy=${filterOption}`;
 		this.props.fetchFilms(url);
 	}
 
+	searchWasFired() {
+		return this.props.location.pathname.includes('search');
+	}
+
 	componentDidMount() {
-		const url = 'http://reactjs-cdp.herokuapp.com/movies';
-		this.props.fetchFilms(url);
+		const currentQuery = this.props.match.params.query;
+		const filterOption = this.props.filterOptions.defaultChecked;
+		if (currentQuery) {
+			this.filterFilms(currentQuery, filterOption);
+		} else {
+			this.props.emptySearch();
+		}
 	}
 
 	render() {
-		let { searchedFilms, sortTypes, selectedSortType, filterOptions, sortFilms } = this.props;
+		let { searchedFilms, sortTypes, selectedSortType, filterOptions, sortFilms, query } = this.props;
+		
 		return (
 			<div className="panel panel-default">
 				<div className="panel-heading">
 					<NetflixLabel />
-					<SearchHeader filterOptions={filterOptions} handleSearchClick={this.handleSearchClick} />
+					<SearchHeader
+						currentQuery={query}
+						filterOptions={filterOptions}
+						handleSearchClick={this.handleSearchClick}
+					/>
 				</div>
 				<div className="panel-body">
 					<SearchToolbar
@@ -47,7 +66,6 @@ export class SearchPage extends Component {
 					/>
 					<FilmList films={searchedFilms} />
 				</div>
-				<Footer />
 			</div>
 		);
 	}
@@ -58,8 +76,9 @@ const mapStateToProps = (state) => {
 		searchedFilms: getSortedFilms(state),
 		selectedSortType: state.selectedSortType,
 		sortTypes: state.sortTypes,
-		filterOptions: state.filterOptions
+		filterOptions: state.filterOptions,
+		query: state.query
 	};
 };
 
-export default connect(mapStateToProps, actions)(SearchPage);
+export default withRouter(connect(mapStateToProps, actions)(SearchPage));
