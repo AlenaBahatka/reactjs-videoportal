@@ -41,6 +41,9 @@ Task5
 
 Task6
 1. add router npm install --save react-router-dom <br/>
-2. hash was used according to the following recomendation: https://github.com/ReactTraining/react-router/blob/master/FAQ.md#why-doesnt-my-application-render-after-refreshing <br/>
-3. dist folder was deleted from git repo <br />
-4. note: as there is no requirements about test. some of them may fail after changes connected with routing. <br />
+2. two main pages should work. links were added to titles of films and button 'search'.<br/>
+3. 404 page was added<br/>
+4. also user should be able to open page using url<br/>
+5. hash was used according to the following recomendation: https://github.com/ReactTraining/react-router/blob/master/FAQ.md#why-doesnt-my-application-render-after-refreshing <br/>
+6. dist folder was deleted from git repo <br />
+7. note: as there is no requirements about test. some of them may fail after changes connected with routing. <br />
