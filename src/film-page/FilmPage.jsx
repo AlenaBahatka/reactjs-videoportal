@@ -26,7 +26,7 @@ export class FilmPage extends Component {
 	}
 
 	getPageData(filmId) {
-		this.props.getFilmWithSimilar(`https://reactjs-cdp.herokuapp.com/movies/${filmId}`);
+		this.props.getFilmWithSimilar(filmId);
 	}
 
 	render() {
@@ -58,8 +58,8 @@ FilmPage.propTypes = {
 
 const mapStateToProps = (state) => {
 	return {
-		film: state.selectedFilm,
-		similarFilms: state.similarFilms
+		film: state.filmsReducer.selectedFilm,
+		similarFilms: state.filmsReducer.similarFilms
 	};
 };
 

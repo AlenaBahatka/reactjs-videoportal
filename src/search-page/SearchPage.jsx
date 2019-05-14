@@ -73,11 +73,11 @@ export class SearchPage extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		searchedFilms: getSortedFilms(state),
-		selectedSortType: state.selectedSortType,
-		sortTypes: state.sortTypes,
-		filterOptions: state.filterOptions,
-		query: state.query
+		searchedFilms: getSortedFilms(state.filmsReducer),
+		selectedSortType: state.filmsReducer.selectedSortType,
+		sortTypes: state.filmsReducer.sortTypes,
+		filterOptions: state.filmsReducer.filterOptions,
+		query: state.filmsReducer.query
 	};
 };
 

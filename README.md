@@ -2,7 +2,8 @@
 Create ReactJS small app
 
 Task1
-1. created empty project using https://expressjs.com/ru/starter/installing.html
+1. created empty project using https://expressjs.com/ru/starter/installing.html <br />
+2. node server.js => http://localhost:3000/ <br />
 
 Task2
 1. was installed: <br />
@@ -47,3 +48,16 @@ Task6
 5. hash was used according to the following recomendation: https://github.com/ReactTraining/react-router/blob/master/FAQ.md#why-doesnt-my-application-render-after-refreshing <br/>
 6. dist folder was deleted from git repo <br />
 7. note: as there is no requirements about test. some of them may fail after changes connected with routing. <br />
+
+Task7
+1. run (for example from a build folder): node bundle.js - should start on loclahost:3000 <br />
+2. if any of files are changed -> then rerun webpack -> then Restart server <br />
+to make it available nodemon was installed. to try it run 2 commands: <br />
+a) npm run build:dev:server<br />
+b) npm run dev:server<br />
+3. + npm install --save-dev npm-run-all <br />
+to tun two mentioned commands using one command.<br />
+just use in terminal the following command: npm run dev<br />
+4. main logic connected with server and client is in src/app, initial state added after full loading in global variable<br />
+5. added code splitting using libriary react-loadable <br />
+6. webpack config for server and client is in webpack folder

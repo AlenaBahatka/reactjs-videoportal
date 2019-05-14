@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 import {
 	RECEIVE_FILMS_SUCCESS,
 	SORT_FILMS,
@@ -86,4 +88,8 @@ function filmsReducer(state = initialState, action) {
 	}
 }
 
-export default filmsReducer;
+const rootReducer = combineReducers({
+	filmsReducer
+});
+
+export default rootReducer;

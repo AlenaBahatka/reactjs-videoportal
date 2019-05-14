@@ -1,4 +1,5 @@
 import { remapFilmsStructure, remapFilmStructure } from '../../util/FilmUtil';
+import fetch from 'node-fetch';
 
 export const RECEIVE_FILMS_SUCCESS = 'RECEIVE_FILMS_SUCCESS';
 export const SORT_FILMS = 'SORT_FILMS';
@@ -39,7 +40,9 @@ export const emptySearch = () => ({
 	type: EMPTY_SEARCH
 });
 
-export const fetchFilms = (url) => {
+export const fetchFilms = (query, filterOption) => {
+	const url = `https://reactjs-cdp.herokuapp.com/movies?search=${query}&searchBy=${filterOption}`;
+
 	return (dispatch) => {
 		return fetch(url).then((response) => response.json()).then(({ data: films }) => {
 			dispatch(receiveFilms(remapFilmsStructure(films)));
@@ -66,10 +69,11 @@ export const fetchSimilarFilms = (selectedFilmGenre) => {
 	};
 };
 
-export const getFilmWithSimilar = (urlFilm) => {
+export const getFilmWithSimilar = (filmId) => {
+	const urlFilm = `https://reactjs-cdp.herokuapp.com/movies/${filmId}`
 	return (dispatch, getState) => {
 		return dispatch(fetchOneFilm(urlFilm)).then(() => {
-			const selectedFilmGenre = getState().selectedFilm.genre;
+			const selectedFilmGenre = getState().filmsReducer.selectedFilm.genre;
 			return dispatch(fetchSimilarFilms(selectedFilmGenre));
 		});
 	};
