@@ -13,7 +13,7 @@ describe('filmReducer', () => {
 	beforeEach(() => {
 		state = {
 			filterOptions: {
-				filterOptions: [ { name: 'title' }, { name: 'genre' } ],
+				filterOptions: [{ name: 'title' }, { name: 'genre' }],
 				defaultChecked: 'title'
 			},
 			searchedFilms: [],
@@ -34,24 +34,24 @@ describe('filmReducer', () => {
 	});
 
 	it('should return correct new state for receiveFilms', () => {
-		let films = [ { title: 'some film' } ];
-		let receiveAction = {
+		const films = [{ title: 'some film' }];
+		const receiveAction = {
 			type: RECEIVE_FILMS_SUCCESS,
 			films
 		};
-		let newState = filmReducer(state, receiveAction);
+		const newState = filmReducer(state, receiveAction);
 
 		expect(newState.searchedFilms.length).toBeTruthy();
 	});
 
 	it('should return correct new state when sortFilms ', () => {
-		let selectedSortType = 'title';
-		let sortAction = {
+		const selectedSortType = 'title';
+		const sortAction = {
 			type: SORT_FILMS,
 			sortOption: selectedSortType
 		};
 
-		let newState = filmReducer(state, sortAction);
+		const newState = filmReducer(state, sortAction);
 
 		expect(newState.selectedSortType).toEqual(selectedSortType);
 	});
@@ -61,51 +61,52 @@ describe('filmReducer', () => {
 	});
 
 	it('should return correct new state when receive one film', () => {
-		let film = { title: 'some film' };
+		const film = { title: 'some film' };
 
-		let receiveOneAction = {
+		const receiveOneAction = {
 			type: RECEIVE_ONE_FILM_SUCCESS,
 			film
 		};
 
-		let newState = filmReducer(state, receiveOneAction);
+		const newState = filmReducer(state, receiveOneAction);
 
 		expect(newState.selectedFilm).toEqual(film);
 	});
 
 	it('should return the same state for unknown action', () => {
-		let film = { title: 'some film' };
+		const film = { title: 'some film' };
 
-		let unknownAction = {
+		const unknownAction = {
 			type: 'UNKNOWN',
 			film
 		};
-		let newState = filmReducer(state, unknownAction);
+		const newState = filmReducer(state, unknownAction);
 
 		expect(newState).toEqual(state);
 	});
 
 	it('should update similar films for similarFilms action', () => {
-		let similarFilms = [ { title: 'some film' } ];
+		const similarFilms = [{ title: 'some film' }];
 
-		let similarFilmsAction = {
+		const similarFilmsAction = {
 			type: RECEIVE_SIMILAR_FILMS_SUCCESS,
 			similarFilms
 		};
-		let newState = filmReducer(state, similarFilmsAction);
+		const newState = filmReducer(state, similarFilmsAction);
 
 		expect(newState.similarFilms).toEqual(similarFilms);
 	});
 
 	describe('filter action', () => {
-		let payload, newState;
+		let payload; let
+			newState;
 
 		beforeEach(() => {
 			payload = {
 				checkedFilter: 'genre',
 				query: 'cat'
 			};
-			let filterAction = {
+			const filterAction = {
 				type: FILTER_FILMS,
 				...payload
 			};

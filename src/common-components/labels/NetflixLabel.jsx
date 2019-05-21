@@ -1,7 +1,14 @@
 import React from 'react';
+import injectSheet from 'react-jss'
 
-function NetflixLabel() {
-	return <span>netflixroulette</span>;
+const styles = {
+	label: {
+		color: 'red'
+	}
 }
 
-export default NetflixLabel;
+function NetflixLabel({classes}) {
+	return <span className={classes.label}>netflixroulette</span>;
+}
+
+export default injectSheet(styles)(NetflixLabel);

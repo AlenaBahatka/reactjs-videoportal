@@ -1,3 +1,4 @@
+// @flow
 import { createStore, applyMiddleware } from 'redux';
 
 import { persistStore, persistReducer } from 'redux-persist';
@@ -7,7 +8,7 @@ import thunk from 'redux-thunk';
 
 import filmsReducer from '../reducers/reducers';
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState?: Object) {
 	const persistConfig = {
 		key: 'videoportalStorage',
 		storage

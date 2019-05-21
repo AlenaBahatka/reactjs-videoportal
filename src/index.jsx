@@ -1,13 +1,9 @@
-import React from 'react'; 
-import ReactDOM from 'react-dom'; 
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import configureStore from './+state/store/store'
-import Root from './root/Root'
+import configureStore from './+state/store/store';
+import Root from './root/Root';
 
-const {store, persistor} = configureStore()
+const { store, persistor } = configureStore();
 
-ReactDOM.render(
-    <Root store={store} persistor={persistor}></Root>,
-    document.getElementById('root')
-);
-
+ReactDOM.render(<Root store={store} persistor={persistor} />, document.getElementById('root'));

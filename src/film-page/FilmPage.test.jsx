@@ -18,7 +18,7 @@ describe('FilmPage', () => {
 
 	it('should correctly render component', () => {
 		const getFilmWithSimilarStub = jest.fn();
-		let filmPageComponent = mount(
+		mount(
 			<FilmPage film={film} similarFilms={similarFilms} getFilmWithSimilar={getFilmWithSimilarStub} />
 		);
 

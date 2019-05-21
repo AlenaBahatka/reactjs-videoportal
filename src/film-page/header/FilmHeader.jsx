@@ -1,8 +1,11 @@
+// @flow
 import React from 'react';
+import type { Element } from 'react';
+import type {FilmFlowtype} from '../../flowtypes/commonFlowtypes';
 
-function FilmHeader(props) {
+function FilmHeader(props: {filmInfo: FilmFlowtype}): Element<any> {
 	let { title, year, coverPicture, rating, description, fullDescription, duration } = props.filmInfo;
-	
+
 	return (
 		<div className="row">
 			<div className="col-sm-6">

@@ -50,14 +50,23 @@ Task6
 7. note: as there is no requirements about test. some of them may fail after changes connected with routing. <br />
 
 Task7
-1. run (for example from a build folder): node bundle.js - should start on loclahost:3000 <br />
+1. run (for example from a build folder): node bundle.js - should start on localhost:3000 <br />
 2. if any of files are changed -> then rerun webpack -> then Restart server <br />
 to make it available nodemon was installed. to try it run 2 commands: <br />
 a) npm run build:dev:server<br />
 b) npm run dev:server<br />
 3. + npm install --save-dev npm-run-all <br />
-to tun two mentioned commands using one command.<br />
+to run two mentioned commands using one command.<br />
 just use in terminal the following command: npm run dev<br />
 4. main logic connected with server and client is in src/app, initial state added after full loading in global variable<br />
 5. added code splitting using libriary react-loadable <br />
 6. webpack config for server and client is in webpack folder
+
+Task8
+1. eslint installed and configured in .eslintrc file:
+npm install --save-dev eslint babel-eslint eslint-plugin-react eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
+2. installed npm install --save-dev babel-cli babel-preset-flow & npm install --save-dev flow-bin
+3. selector was added previously. installed immutable and used in a store
+4. installed react-jss and updated NetflixLabel with a small style just to try
+5. Flow was used insted of proptypes
+6. tried to install story-book but had some issues with running

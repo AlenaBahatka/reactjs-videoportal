@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 import ErrorBoundary from '../common-components/error-boundary/ErrorBoundary';
 import filmsReducer from '../+state/reducers/reducers';
-import Root from '../../src/root/Routes';
+import Root from '../root/Routes';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.PRELOADED_STATE;

@@ -1,18 +1,32 @@
+// @flow
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import FilterOption from '../common-components/FilterOption';
 
-class SearchHeader extends PureComponent {
-	constructor(props) {
+type SearchHeaderPropTypes = {
+	currentQuery: string,
+	handleSearchClick: Function,
+	filterOptions: {
+		defaultChecked: string,
+		filterOptions: Array<{
+			name: string
+		}>
+	}
+}
+type State = {
+	filterOption: string,
+	query: string
+}
+class SearchHeader extends PureComponent<SearchHeaderPropTypes, State> {
+	constructor(props: SearchHeaderPropTypes) {
 		super(props);
 		this.state = {
 			filterOption: props.filterOptions.defaultChecked,
 			query: props.currentQuery
 		};
-		this.handleOptionChange = this.handleOptionChange.bind(this);
-		this.handleSearchClick = this.handleSearchClick.bind(this);
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.keyPress = this.keyPress.bind(this);
+		(this: any).handleOptionChange = this.handleOptionChange.bind(this);
+		(this: any).handleSearchClick = this.handleSearchClick.bind(this);
+		(this: any).handleInputChange = this.handleInputChange.bind(this);
+		(this: any).keyPress = this.keyPress.bind(this);
 	}
 
 	handleSearchClick() {
@@ -22,22 +36,20 @@ class SearchHeader extends PureComponent {
 		} else {
 			alert('check your query');
 		}
-		// TODO: remove later. just for logging
-		console.log('run search with filter =', this.state.filterOption, '& search query = ', this.state.query);
 	}
 
-	handleOptionChange(checkedOption) {
+	handleOptionChange(checkedOption: string) {
 		this.setState({
 			filterOption: checkedOption
 		});
 	}
-	handleInputChange(event) {
+	handleInputChange(event: SyntheticKeyboardEvent<any>) {
 		this.setState({
-			query: event.target.value
+			query: event.currentTarget.value
 		});
 	}
 
-	keyPress(event) {
+	keyPress(event: SyntheticKeyboardEvent<any>) {
 		if (event.keyCode == 13) {
 			this.handleInputChange(event);
 			this.handleSearchClick();
@@ -62,7 +74,7 @@ class SearchHeader extends PureComponent {
 					<div id="filterOptionsContainer">
 						<span>Search by</span>
 						<ul>
-							{filterOptions.map((option, i) => (
+							{filterOptions.map((option) => (
 								<li key={option.name}>
 									<FilterOption
 										checkedOption={this.state.filterOption}
@@ -85,9 +97,5 @@ class SearchHeader extends PureComponent {
 		);
 	}
 }
-
-SearchHeader.propTypes = {
-	filterOptions: PropTypes.object
-};
 
 export default SearchHeader;

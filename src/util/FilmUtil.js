@@ -1,6 +1,6 @@
 // function to map service structure of response to the correct one
 export const remapFilmsStructure = (films = []) => {
-	let filmsWithUpdatedStructure = [];
+	const filmsWithUpdatedStructure = [];
 	films.forEach((film) => {
 		filmsWithUpdatedStructure.push(remapFilmStructure(film));
 	});
@@ -8,7 +8,7 @@ export const remapFilmsStructure = (films = []) => {
 };
 
 export const remapFilmStructure = (film = {}) => {
-	let filmDate = new Date(film.release_date);
+	const filmDate = new Date(film.release_date);
 	return {
 		title: film.title,
 		director: film.director || 'Unknown director',

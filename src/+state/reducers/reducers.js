@@ -1,4 +1,7 @@
+// @flow
 import { combineReducers } from 'redux';
+import {List} from 'immutable';
+import type {StoreFlowtype} from '../../flowtypes/storeFlowtype';
 
 import {
 	RECEIVE_FILMS_SUCCESS,
@@ -9,12 +12,12 @@ import {
 	EMPTY_SEARCH
 } from '../actions/actions';
 
-let initialState = {
+const initialState = {
 	filterOptions: {
-		filterOptions: [ { name: 'title' }, { name: 'genre' } ],
+		filterOptions: [{ name: 'title' }, { name: 'genre' }],
 		defaultChecked: 'title'
 	},
-	searchedFilms: [],
+	searchedFilms: List(),
 	sortTypes: [
 		{
 			id: 'releaseDate',
@@ -31,60 +34,60 @@ let initialState = {
 	query: ''
 };
 
-function filmsReducer(state = initialState, action) {
+function filmsReducer(state: StoreFlowtype = initialState, action: Object): StoreFlowtype {
 	switch (action.type) {
-		case RECEIVE_FILMS_SUCCESS: {
-			return {
-				...state,
-				searchedFilms: action.films
-			};
-		}
+	case RECEIVE_FILMS_SUCCESS: {
+		return {
+			...state,
+			searchedFilms: action.films
+		};
+	}
 
-		case FILTER_FILMS: {
-			let { checkedFilter, query } = action;
-			return {
-				...state,
-				filterOptions: {
-					...state.filterOptions,
-					defaultChecked: checkedFilter
-				},
-				query
-			};
-		}
+	case FILTER_FILMS: {
+		const { checkedFilter, query } = action;
+		return {
+			...state,
+			filterOptions: {
+				...state.filterOptions,
+				defaultChecked: checkedFilter
+			},
+			query
+		};
+	}
 
-		case SORT_FILMS: {
-			return {
-				...state,
-				selectedSortType: action.sortOption
-			};
-		}
+	case SORT_FILMS: {
+		return {
+			...state,
+			selectedSortType: action.sortOption
+		};
+	}
 
-		case RECEIVE_ONE_FILM_SUCCESS: {
-			return {
-				...state,
-				selectedFilm: action.film
-			};
-		}
+	case RECEIVE_ONE_FILM_SUCCESS: {
+		return {
+			...state,
+			selectedFilm: action.film
+		};
+	}
 
-		case RECEIVE_SIMILAR_FILMS_SUCCESS: {
-			return {
-				...state,
-				similarFilms: action.similarFilms
-			};
-		}
+	case RECEIVE_SIMILAR_FILMS_SUCCESS: {
+		return {
+			...state,
+			similarFilms: action.similarFilms
+		};
+	}
 
-		case EMPTY_SEARCH: {
-			return {
-				...state,
-				selectedFilm: {},
-				similarFilms: [],
-				query: '',
-				searchedFilms: []
-			};
-		}
+	case EMPTY_SEARCH: {
+		return {
+			...state,
+			selectedFilm: {},
+			similarFilms: [],
+			query: '',
+			searchedFilms: []
+		};
+	}
 
-		default:
-			return state;
+	default:
+		return state;
 	}
 }
 

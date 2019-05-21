@@ -7,7 +7,7 @@ module.exports = merge(common, {
 	name: 'client',
 	target: 'web',
 	// entry point of app
-	entry: './src/app/client.js',
+	entry: './src/app/client.jsx',
 
 	// tell webpack where to put output file that is generated
 	output: {

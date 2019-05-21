@@ -1,15 +1,22 @@
-import PropTypes from 'prop-types';
+// @flow
 import React from 'react';
+import type { Element } from 'react';
 import FilmCard from './FilmCard';
 
-FilmList.propTypes = {
-	films: PropTypes.array
-};
+type FilmListPropTypes = {
+    films: [{
+		title: string,
+		director: string,
+		year: number,
+		coverPicture: string,
+		id: number
+	}]
+}
 
-function FilmList(props) {
+function FilmList(props: FilmListPropTypes): Element<any> {
 	return (
 		<div>
-			{props.films.map((film, i) => (
+			{props.films.map((film) => (
 				<FilmCard
 					title={film.title}
 					director={film.director}

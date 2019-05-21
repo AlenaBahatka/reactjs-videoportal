@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
@@ -8,12 +9,17 @@ import Loadable from 'react-loadable';
 import Root from '../../root/Routes';
 import ErrorBoundary from '../../common-components/error-boundary/ErrorBoundary';
 import stats from '../../../public/react-loadable.json';
+import type {StoreFlowtype} from '../../flowtypes/storeFlowtype';
 
-export default (req, store, context) => {
-	let modules = [];
+export default (req: {path: string}, store: StoreFlowtype, context: {}) => {
+	const modules = [];
 
 	const renderRoot = () => (
-		<Loadable.Capture report={(moduleName) => {modules.push(moduleName)}}>
+		<Loadable.Capture
+			report={(moduleName) => {
+				modules.push(moduleName);
+			}}
+		>
 			<Provider store={store}>
 				<ErrorBoundary>
 					<StaticRouter location={req.path} context={context}>
@@ -22,16 +28,16 @@ export default (req, store, context) => {
 				</ErrorBoundary>
 			</Provider>
 		</Loadable.Capture>
-    );
+	);
 
-    const content = renderToString(renderRoot());
+	const content = renderToString(renderRoot());
 	const preloadedState = store.getState();
 	const bundles = getBundles(stats, modules);
 
 	return renderHTML(content, preloadedState, bundles);
 };
 
-function renderHTML(content, preloadedState, bundles) {
+function renderHTML(content, preloadedState, bundles): string {
 	return `
         <!doctype html>
         <html>
@@ -46,9 +52,7 @@ function renderHTML(content, preloadedState, bundles) {
                 <script>
                     window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
                 </script>
-                ${bundles.map((bundle) => {
-						return `<script src="${bundle.publicPath}"></script>`
-					}).join('\n')}
+                ${bundles.map((bundle) => `<script src="${bundle.publicPath}"></script>`).join('\n')}
                 <script src="/main.bundle.js"></script>
             </body>
         </html>

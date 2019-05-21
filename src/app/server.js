@@ -6,17 +6,15 @@ import createStore from './helpers/createStore';
 import renderer from './helpers/renderer';
 import { routes } from '../root/Routes';
 
-var app = express();
+const app = express();
 
 app.use(express.static('public'));
 
-app.get('*', function(req, res) {
+app.get('*', (req, res) => {
 	const store = createStore();
 
-	let promises = matchRoutes(routes, req.path)
-		.map(({ route }) => {
-			return route.loadData ? route.loadData(store, req.path) : null;
-		})
+	const promises = matchRoutes(routes, req.path)
+		.map(({ route }) => (route.loadData ? route.loadData(store, req.path) : null))
 		.map((promise) => {
 			if (promise) {
 				return new Promise((resolve, reject) => {
@@ -27,7 +25,7 @@ app.get('*', function(req, res) {
 
 	Promise.all(promises).then(() => {
 		const context = {};
-		let content = renderer(req, store, context);
+		const content = renderer(req, store, context);
 		if (context.notFound) {
 			res.status(404);
 		}
@@ -36,7 +34,7 @@ app.get('*', function(req, res) {
 });
 
 Loadable.preloadAll().then(() => {
-	app.listen(3000, function() {
+	app.listen(3000, () => {
 		console.log('Routing on port 3000!');
 	});
 });

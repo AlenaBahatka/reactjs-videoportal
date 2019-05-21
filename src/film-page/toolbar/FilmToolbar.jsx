@@ -1,7 +1,10 @@
+// @flow
 import React from 'react';
 
-function FilmToolbar(props) {
-	
+type FilmToolbarPropTypes = {
+	genre: string
+}
+function FilmToolbar(props: FilmToolbarPropTypes) {
 	return (
 		<div className="row">
 			<div className="col-sm-9">

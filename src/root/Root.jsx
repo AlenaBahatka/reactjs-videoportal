@@ -1,5 +1,5 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
@@ -9,8 +9,13 @@ import FilmPage from '../film-page/FilmPage';
 import Footer from '../common-components/footer/Footer';
 import SearchPage from '../search-page/SearchPage';
 import NotFoundPage from '../common-components/not-found/NotFoundPage';
+import type {StoreFlowtype} from '../flowtypes/storeFlowtype';
 
-const Root = ({ store, persistor }) => (
+type RootTypes = {
+	store: StoreFlowtype,
+	persistor: any
+}
+const Root = ({ store, persistor }: RootTypes) => (
 	<Provider store={store}>
 		<PersistGate loading={null} persistor={persistor}>
 			<ErrorBoundary>
@@ -27,9 +32,5 @@ const Root = ({ store, persistor }) => (
 		</PersistGate>
 	</Provider>
 );
-
-Root.propTypes = {
-	store: PropTypes.object.isRequired
-};
 
 export default Root;

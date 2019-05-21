@@ -1,8 +1,7 @@
+// @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import FilmList from '../common-components/film-list/FilmList';
 import FilmToolbar from './toolbar/FilmToolbar';
@@ -10,14 +9,32 @@ import FilmHeader from './header/FilmHeader';
 import NetflixLabel from '../common-components/labels/NetflixLabel';
 
 import * as actions from '../+state/actions/actions';
+import type {FilmFlowtype} from '../flowtypes/commonFlowtypes';
 
-export class FilmPage extends Component {
+type matchPtops = {
+	params: {
+		filmId: number
+	}
+};
+type FilmPageProps = {
+	match: matchPtops,
+	film: FilmFlowtype,
+	getFilmWithSimilar: Function,
+	similarFilms: [{
+		title: string,
+		director: string,
+		year: number,
+		coverPicture: string,
+		id: number
+	}]
+}
+export class FilmPage extends Component<FilmPageProps> {
 	componentDidMount() {
 		let filmId = this.props.match.params.filmId;
 		this.getPageData(filmId);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps(nextProps: {match: matchPtops}) {
 		const nextFilmId = nextProps.match.params.filmId;
 		const currentFilmId = this.props.match.params.filmId;
 		if (currentFilmId !== nextFilmId) {
@@ -25,7 +42,7 @@ export class FilmPage extends Component {
 		}
 	}
 
-	getPageData(filmId) {
+	getPageData(filmId: number) {
 		this.props.getFilmWithSimilar(filmId);
 	}
 
@@ -50,11 +67,6 @@ export class FilmPage extends Component {
 		);
 	}
 }
-
-FilmPage.propTypes = {
-	film: PropTypes.object,
-	similarFilms: PropTypes.array
-};
 
 const mapStateToProps = (state) => {
 	return {

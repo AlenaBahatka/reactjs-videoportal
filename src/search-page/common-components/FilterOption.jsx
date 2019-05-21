@@ -1,7 +1,15 @@
+// @flow
 import React from 'react';
 
-function FilterOption(props) {
-	
+type FilterOptionPropTypes = {
+	optionName: string,
+	checkedOption: string,
+	name: string,
+	displayName: string,
+	handleOptionChange: Function
+}
+
+function FilterOption(props: FilterOptionPropTypes) {
 	return (
 		<label>
 			<input

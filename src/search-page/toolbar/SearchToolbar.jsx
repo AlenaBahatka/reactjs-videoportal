@@ -1,17 +1,34 @@
+// @flow
 import React, { PureComponent } from 'react';
 import FilterOption from '../common-components/FilterOption';
 
-class SearchToolbar extends PureComponent {
-	constructor(props) {
+type SearchToolbarPropTypes = {
+	sortTypes: Array<{
+		displayName: string,
+		id: string
+	}>,
+	selectedSortType: string,
+	numberOfFilms: ?number,
+	sortHandler: Function
+}
+type State = {
+	selectedSortType: string,
+	sortTypes: Array<{
+		displayName: string,
+		id: string
+	}>
+}
+class SearchToolbar extends PureComponent<SearchToolbarPropTypes, State> {
+	constructor(props: SearchToolbarPropTypes) {
 		super(props);
 		this.state = {
 			sortTypes: this.props.sortTypes,
 			selectedSortType: this.props.selectedSortType
 		};
-		this.handleOptionChange = this.handleOptionChange.bind(this);
+		(this: any).handleOptionChange = this.handleOptionChange.bind(this);
 	}
 
-	handleOptionChange(checkedOption) {
+	handleOptionChange(checkedOption: string) {
 		this.setState({
 			selectedSortType: checkedOption
 		});
@@ -45,6 +62,5 @@ class SearchToolbar extends PureComponent {
 		);
 	}
 }
-
 
 export default SearchToolbar;

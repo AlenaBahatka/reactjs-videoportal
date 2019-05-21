@@ -1,15 +1,17 @@
-import PropTypes from 'prop-types';
+// @flow
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import type { Element } from 'react';
 
-FilmCard.propTypes = {
-	title: PropTypes.string,
-	director: PropTypes.string,
-	year: PropTypes.number
+type FilmCardPropTypes = {
+    title: string, 
+    director: string,  
+	year: string, 
+	coverPicture: string, 
+	filmId: number
 };
 
-function FilmCard(props) {
+function FilmCard(props: FilmCardPropTypes): Element<any> {
 	let { title, director, year, coverPicture, filmId } = props;
 	const uri = `/film/${filmId}`;
 

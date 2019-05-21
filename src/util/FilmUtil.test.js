@@ -2,7 +2,7 @@ import * as FilmUtil from './FilmUtil';
 
 describe('FilmUtil', () => {
 	it('should correctly remap films', () => {
-		let films = [
+		const films = [
 			{
 				id: 447365,
 				title: 'Guardians of the Galaxy Vol. 3',
@@ -14,13 +14,13 @@ describe('FilmUtil', () => {
 				overview: "The third film based on Marvel's Guardians of the Galaxy.",
 				budget: 0,
 				revenue: 0,
-				genres: [ 'Action', 'Adventure', 'Science Fiction' ],
+				genres: ['Action', 'Adventure', 'Science Fiction'],
 				runtime: null
 			}
 		];
-		let date = new Date('2020-05-01');
+		const date = new Date('2020-05-01');
 
-		let expectedFilms = [
+		const expectedFilms = [
 			{
 				coverPicture: 'https://image.tmdb.org/t/p/w500/ldoY4fTZkGISMidNw60GHoNdgP8.jpg',
 				description: '',
@@ -35,7 +35,7 @@ describe('FilmUtil', () => {
 				year: 2020
 			}
 		];
-		let remapedFilms = FilmUtil.remapFilmsStructure(films);
+		const remapedFilms = FilmUtil.remapFilmsStructure(films);
 
 		expect(remapedFilms).toEqual(expectedFilms);
 	});
